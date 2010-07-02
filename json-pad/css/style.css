@@ -1,0 +1,59 @@
+.CodeMirror-line-numbers {
+	width: 2.3em;
+	color: #aaa;
+	background-color: #eee;
+	text-align: right;
+	padding: .4em;
+	margin: 0;
+	font-family: monospace;
+	font-size: 10pt;
+	/*line-height: 15px;*/
+	line-height: 1.15em;
+}
+
+.parentToolbar {
+	padding: 0px !important;
+	border: none !important;
+}
+
+.x-splitbar-v {
+	cursor: pointer;
+}
+
+.x-splitbar-h {
+	cursor: pointer;
+}
+
+.tree-qtip-cell-caption {
+	float: left;
+	width: 50px;
+}
+
+#jsonStringInputFrame {
+	width: 200px;
+	height: 200px;
+	border: none;
+	padding: 2px;
+	overflow-y: scroll;
+	font: 12px Arial;
+}
+
+.x-status-error {
+	/*cursor: default !important;*/
+	font-weight: bold !important;
+	padding-top: 4px;
+}
+
+.x-window-dlg {
+	z-index: 20010 !important;
+}
+
+div.main-bottom-panel div.x-panel-body {
+	background-color: #DFE8F6;
+	font: 10px Arial;
+	padding: 0 2px;
+}
+
+.x-status-error-detail-link {
+    cursor: pointer !important;
+}
