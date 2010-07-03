@@ -18,6 +18,14 @@ JP.MainTop.Action = {
 };
 
 JP.MainTop.Action.mainBar = {
+    saveAsFile: function () {
+	if ( Ext.isAir ) {
+	    var fileChooser = air.File.documentsDirectory;
+
+	    fileChooser.browseForSave("Save");
+	    fileChooser.addEventListener(air.Event.SELECT, JPAir.events.onSaveAsSelect);
+	}
+    },
     quitApplication: function(){
 	JP.util.exit();
     },
@@ -286,5 +294,45 @@ JP.MainTop.Action.iconBar = {
 
     insertExample: function () {
 	this.findParentByType("viewport").findByType("jp_main_center_stringForm")[0].findByType("ux-codemirror")[0].setValue(this.example);
+    },
+
+    fetchJsonByUrl: function (field, value) {
+	var me = this;
+	if ( !isUrl(value) ) {
+	    Ext.Msg.show({
+		title: 'No valid url',
+		msg: 'Please enter a valid url with http://!',
+		buttons: Ext.MessageBox.OK,
+		icon: Ext.MessageBox.ERROR
+	    });
+	} else {
+	    var conn = new Ext.data.Connection();
+	    conn.request({
+		url: value,
+		method: 'POST',
+		success: function(responseObject) {
+		    var stringInputField = me.findParentByType("viewport").findByType("jp_main_center_stringForm")[0].findByType("ux-codemirror")[0];
+		    var json = JP.util.parseJson(responseObject.responseText, true);
+
+		    if (JP.util.validateJson(json, true)) {
+			JP.util.setJPStatus({
+			    text: 'Fetched JSON string succesfully',
+			    iconCls: 'x-status-valid',
+			    clear: true
+			}, 'left');
+		    }
+		    
+		    stringInputField.setValue( JSON.stringify(json, null, '  ') );
+		},
+		failure: function() {
+		    Ext.Msg.show({
+			title: 'Fetching error',
+			msg: 'Unable to fetch JSON string from url: ' + value,
+			buttons: Ext.MessageBox.OK,
+			icon: Ext.MessageBox.ERROR
+		    });
+		}
+	    });
+	}
     }
 };

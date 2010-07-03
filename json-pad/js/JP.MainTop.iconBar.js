@@ -65,9 +65,25 @@ JP.MainTop.iconBar = Ext.extend(Ext.Toolbar, {
 	{
 	    xtype: 'buttongroup',
 	    title: 'Tools',
-	    columns: 3,
+	    columns: 4,
 	    ref: 'btnGroup_others',
 	    items: [
+	    {
+		iconCls: 'icon_loadFromUrl',
+		scale: 'medium',
+		tooltip: 'Load JSON string by an url',
+		ref: 'loadFromUrl',
+		menu: {
+		    ref: 'menu',
+		    items: [
+		    new Ext.ux.form.FetchField({
+			emptyText: 'Enter an url...',
+			width:320,
+			ref: 'fetchfield'
+		    })
+		    ]
+		}
+	    },
 	    {
 		iconCls: 'icon_convertXml',
 		scale: 'medium',
@@ -132,6 +148,7 @@ JP.MainTop.iconBar = Ext.extend(Ext.Toolbar, {
 	this.btnGroup_clipboard.paste.setHandler( JP.MainTop.Action.pasteJsonStringFromClipboard, this );
 
 	this.btnGroup_others.convertXML.setHandler( JP.MainTop.Action.openXmlWindow, this );
+	this.btnGroup_others.loadFromUrl.menu.fetchfield.on( 'fetch', JP.MainTop.Action.iconBar.fetchJsonByUrl, this );
 	this.btnGroup_others.validateJson.setHandler( JP.MainTop.Action.iconBar.validateJsonString, this );
 	this.btnGroup_others.switchHighlighting.on( "toggle", JP.MainTop.Action.iconBar.switchHighlighting, this );
 	

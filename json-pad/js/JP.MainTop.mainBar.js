@@ -9,6 +9,11 @@ JP.MainTop.mainBar = Ext.extend(Ext.Toolbar, {
 		ref: 'menu',
 		items: [
 		{
+		    text: 'Save as file..',
+		    statusBarTip: 'Save the JSON string as a file',
+		    ref: 'save_file'
+		},
+		{
 		    text: 'Quit',
 		    statusBarTip: 'Quit the application',
 		    ref: 'quit'
@@ -64,13 +69,14 @@ JP.MainTop.mainBar = Ext.extend(Ext.Toolbar, {
 
 
 	this.file.menu.quit.setHandler( JP.MainTop.Action.mainBar.quitApplication );
+	this.file.menu.save_file.setHandler( JP.MainTop.Action.mainBar.saveAsFile );
 	
 	this.edit.menu.xml2json.setHandler( JP.MainTop.Action.openXmlWindow, this );
 	this.edit.menu.copy.setHandler( JP.MainTop.Action.copyJsonStringToClipboard, this );
 	this.edit.menu.paste.setHandler( JP.MainTop.Action.pasteJsonStringFromClipboard, this );
 
 	this.help.menu.checkUpdate.setHandler( function () {
-	    UpdateApplication.checkUpdate(true);
+	    JPAir.updater.checkUpdate(true);
 	}, this );
 	this.help.menu.about.setHandler( JP.MainTop.Action.mainBar.openAboutWindow, this );
 

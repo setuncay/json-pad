@@ -47,7 +47,7 @@ JP.XmlWindow.xmlForm = Ext.extend(Ext.FormPanel, {
 
 	this.items = [{
 	    xtype: 'ux-codemirror',
-	    codeMirrorPath: 'core/extern/CodeMirror',
+	    codeMirrorPath: (Ext.isAir ? constant.codeMirrorPath.air : constant.codeMirrorPath.web),
 	    language: 'xml',
 	    hideLabel: true,
 	    anchor: '100% 100%',

@@ -17,6 +17,8 @@ Ext.ux.form.CodeMirror = Ext.extend(Ext.form.TextArea, {
 	this.addEvents('initialize');
 	this.on({
 	    resize: function(ta, width, height) {
+		//this.codeEditor.setLineNumbers(false);
+
 		if (this.onResizeCallBackFn)
 		    this.onResizeCallBackFn(this);
 		else {
@@ -49,6 +51,8 @@ Ext.ux.form.CodeMirror = Ext.extend(Ext.form.TextArea, {
 			}
 		    }
 		}
+
+		//this.codeEditor.setLineNumbers(true);
 	    },
 	    afterrender: function() {
 		var parser, stylesheet;
@@ -110,9 +114,9 @@ Ext.ux.form.CodeMirror = Ext.extend(Ext.form.TextArea, {
 			lineNumberTime: 50,
 			iframeClass: 'codemirror-iframe '+me.id,
 			content: this.value,
-			parserConfig: {
+			/*parserConfig: {
 			    json: true
-			},
+			},*/
 			lang: me.language.toLowerCase(),
 			initCallback: function() {
 			    me.initialized = true;
@@ -123,9 +127,11 @@ Ext.ux.form.CodeMirror = Ext.extend(Ext.form.TextArea, {
 
 			    if (me.codeMirrorHidden)
 				me.hideCodeMirror();
+
+			    //me.codeEditor.setLineNumbers(true);
 			}
 		    });
-		}).defer(100);
+		}).defer(50);
 	    }
 	});
     },

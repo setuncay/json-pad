@@ -16,9 +16,26 @@
 
 /*global Ext, JP */
 
-console = {
-    log: air.Introspector ? air.Introspector.Console.log : function(){}
-};
+if ( Ext.isAir ) {
+    console = {
+	log: air.Introspector ? air.Introspector.Console.log : function(){}
+    };
+}
+
+function init () {
+    if ( Ext.isAir ) {
+	//debug.trace(air.NativeApplication.nativeApplication.applicationDescriptor);
+	JPAir.app.xmlInfo = air.NativeApplication.nativeApplication.applicationDescriptor;
+	//debug.trace("dd"+JPAir.app.xmlInfo);
+	JPAir.init();
+    } else {
+	$.get('application.xml', function(data) {
+	    JPAir.app.xmlInfo = data;
+	});
+    }
+
+    if (JPAir.app.getApplicationInfo()[2] == "JSONpad-air.html") air.Introspector.Console.info();
+}
 
 Ext.BLANK_IMAGE_URL = 'core/extjs/resources/images/default/s.gif';
 Ext.ns('JP');
@@ -45,6 +62,3 @@ Ext.onReady(function() {
 	]
     });
 }); // eo function onReady
-
-debug.trace(UpdateApplication.getApplicationInfo()[2]);
-if (UpdateApplication.getApplicationInfo()[2] == "JSONpad-air.html") air.Introspector.Console.info();

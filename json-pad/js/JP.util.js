@@ -13,7 +13,6 @@ JP.util = {
     },
     validateJson: function (json, clear) {
 	if (!json.errorObject) {
-	    debug.trace("clear?"+clear);
 	    if (clear) JP.util.clearCodeMirrorStatus();
 
 	    return true;
@@ -24,7 +23,7 @@ JP.util = {
 		clear: false
 	    });
 
-	    JP.ErrorWindow.Action.init();
+	    if (!JP.ErrorWindow.Action.window) JP.ErrorWindow.Action.init();
 
 	    JP.ErrorWindow.Action.window.setTitle(json.errorObject.length + " error/s found");
 
@@ -40,7 +39,6 @@ JP.util = {
 
 	    var errorContainer = Ext.get(Ext.query(".x-status-error-detail-link")); //@todo Not good for tab plans..
 	    errorContainer.on("click", function (e, t, o) {
-		debug.trace(t.id);
 		var cmp = Ext.getCmp(t.id);
 		var pos = cmp.getPosition();
 
@@ -171,9 +169,9 @@ JP.util = {
 	}
 
 	if (raw)
-	    return JP.constant.NODE_STRING[ind];
+	    return constant.NODE_STRING[ind];
 	else
-	    return JP.constant.NODE_STRING[ind].replace(/\</g,"&lt;").replace(/\>/g,"&gt;");
+	    return constant.NODE_STRING[ind].replace(/\</g,"&lt;").replace(/\>/g,"&gt;");
     }
 };
 

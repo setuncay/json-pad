@@ -8,6 +8,7 @@
 .icon_copy { background-image:url(../img/ico_copy.png) !important; }
 .icon_paste { background-image:url(../img/ico_paste.png) !important; }
 .icon_convertXml { background-image:url(../img/ico_convert_xml.png) !important; }
+.icon_loadFromUrl { background-image:url(../img/ico_loadFromUrl.png) !important; }
 .icon_validate { background-image:url(../img/ico_validate.png) !important; }
 .icon_highlight { background-image:url(../img/ico_highlight.png) !important; }
 
@@ -61,6 +62,29 @@
 	background-image:url(../img/folder-open-object.png) !important;
 }
 
-/*.x-status-error {
-	background-image:url(../img/exclamation.gif) !important;
-}*/
+.x-form-field-wrap .x-form-fetch-trigger {
+    background-image: url(../img/btn_fetch_url.png);
+    background-position: 0 0 !important;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.x-form-field-wrap .x-form-fetch-trigger .x-form-trigger-over {
+    background-image: url(../img/btn_fetch_url_hl.png);
+    background-position: 0 0 !important;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.x-form-field-wrap .x-form-fetch-clear-trigger {
+    background-image: url(../img/btn_clear_url.png);
+    background-position: 0 0 !important;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+.x-form-field-wrap .x-form-fetch-clear-trigger .x-form-trigger-over {
+    background-image: url(../img/btn_clear_url_hl.png) !important;
+    background-position: 0 0 !important;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}

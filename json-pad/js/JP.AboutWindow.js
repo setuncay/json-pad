@@ -32,7 +32,7 @@ JP.AboutWindow = Ext.extend(Ext.Window, {
 	"ExtJS Version Number: {1}<br />&nbsp;<br />"+
 	'</span>';
 
-	var jsonPadVersion = UpdateApplication.getApplicationVersion();
+	var jsonPadVersion = JPAir.app.getApplicationVersion();
 	var extjsVersion = Ext.version;
 	var licenseLink = '<a href="#" id="http://www.jsonpad.co.cc/new_bsd_license.txt" class="link-to-browser">New BSD License</a>';
 	var googleCodeLink = '<a href="#" id="http://code.google.com/p/json-pad/" class="link-to-browser">Google Code</a>';

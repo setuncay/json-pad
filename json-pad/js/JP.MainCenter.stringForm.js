@@ -11,14 +11,14 @@ JP.MainCenter.stringForm = Ext.extend(Ext.FormPanel, {
 	this.items = [
 	{
 	    xtype: 'ux-codemirror',
-	    codeMirrorPath: 'core/extern/CodeMirror',
+	    codeMirrorPath: (Ext.isAir ? constant.codeMirrorPath.air : constant.codeMirrorPath.web),
 	    language: 'js',
 	    hideLabel: true,
 	    name: 'jsonString',
 	    initCallBackFn: function (cm) {
 		me.setWidth(me.getWidth()-1); //@todo Little bug in codemirror... this line helps at the moment
 
-		if (JSONpadAir.settings.syntax_hl == "false") {
+		if (JPAir.preferences.settings.syntax_hl == "false") {
 		    Ext.getCmp("JPviewPort").findByType("jp_main_top")[0].getTopToolbar().findByType("jp_main_top_iconbar")[0].btnGroup_others.switchHighlighting.toggle(false, true);
 		    cm.hideCodeMirror();
 		}
